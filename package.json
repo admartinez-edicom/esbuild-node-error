@@ -1,0 +1,21 @@
+{
+  "name": "esbuild",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "esbuild": "^0.23.1"
+  },
+  "dependencies": {
+    "elastic-apm-node": "^4.7.3",
+    "express": "^4.19.2"
+  },
+  "scripts": {
+    "build-ko": "esbuild --bundle --platform=node --outfile=app-ko.js app-ko.ts",
+    "build-ok1": "esbuild --bundle --platform=node --outfile=app-ok1.js app-ok1.ts",
+    "build-ok2": "esbuild --bundle --platform=node --outfile=app-ok2.js app-ok2.ts",
+    "build-ko-with-fix": "npm run build-ko && sed 's/moduleName = filename;/moduleName = filename;\\n          basedir = \\x27core:\\x27;/g' app-ko.js > app-ko-with-fix.js"
+  }
+}
